@@ -53,7 +53,7 @@ namespace Discount.Grpc.Extensions
                     logger.LogInformation("Migrated postresql database.");
 
                 }
-                catch (NpgsqlException ex)
+                catch (Exception ex)
                 {
 
                     logger.LogError(ex, "Error while trying to access PG SQL Instance {0}", retryForAvailability);
