@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Ordering.Application.Contracts.Persistence
 {
-    interface IOrderRepository : IAsynRepository<Order>
+    public interface IOrderRepository : IAsynRepository<Order>
     {
-        Task<IReadOnlyList<Order>> GetOrderByUserName(string userName);
+        Task<IReadOnlyList<Order>> GetOrdersByUserName(string userName);
     }
 }
