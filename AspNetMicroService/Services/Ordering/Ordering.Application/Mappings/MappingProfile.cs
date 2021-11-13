@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Ordering.Application.Features.Orders.Commands;
+using Ordering.Application.Features.Orders.Commands.DeleteOrder;
 using Ordering.Application.Features.Orders.Commands.UpdateOrderCommand;
 using Ordering.Application.Features.Orders.Queries.GetOrderList;
 using Ordering.Domain.Entities;
