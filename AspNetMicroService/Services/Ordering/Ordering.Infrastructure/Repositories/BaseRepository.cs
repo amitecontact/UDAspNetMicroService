@@ -78,14 +78,13 @@ namespace Ordering.Infrastructure.Repositories
 
         public async Task DeleteAsync(T entity)
         {
-            _BaseDBContext.Entry<T>(entity).State = EntityState.Modified;
-
+            _BaseDBContext.Set<T>().Remove(entity);
             await _BaseDBContext.SaveChangesAsync();
         }
 
         public async Task UpdateAsync(T entity)
         {
-            _BaseDBContext.Set<T>().Remove(entity);
+            _BaseDBContext.Entry<T>(entity).State = EntityState.Modified;
 
             await _BaseDBContext.SaveChangesAsync();
         }
