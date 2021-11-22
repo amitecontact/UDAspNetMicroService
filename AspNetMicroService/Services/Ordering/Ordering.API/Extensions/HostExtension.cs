@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 
 namespace Ordering.API.Extensions
 {
@@ -24,11 +25,13 @@ namespace Ordering.API.Extensions
                 var services = scope.ServiceProvider;
                 var logger = services.GetRequiredService<ILogger<TContext>>();
                 var context = services.GetService<TContext>();
+                var configuration = services.GetService<IConfiguration>();
 
                 try
                 {
                     logger.LogInformation("Migrating database associated with context {DbContextName}", typeof(TContext).Name);
-
+                    logger.LogInformation($"Connection string is {configuration.GetConnectionString("OrderConnectionString")}");
+                    
                     InvokeSeeder(seeder, context, services);
 
                     logger.LogInformation("Migrated database associated with context {DbContextName}", typeof(TContext).Name);
@@ -36,7 +39,7 @@ namespace Ordering.API.Extensions
                 catch (SqlException ex)
                 {
                     logger.LogError(ex, "An error occurred while migrating the database used on context {DbContextName}", typeof(TContext).Name);
-
+                    
                     if (retryForAvailability < 50)
                     {
                         retryForAvailability++;
