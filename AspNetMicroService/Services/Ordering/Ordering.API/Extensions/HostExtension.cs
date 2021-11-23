@@ -29,7 +29,7 @@ namespace Ordering.API.Extensions
 
                 try
                 {
-                    logger.LogInformation("Migrating database associated with context {DbContextName}", typeof(TContext).Name);
+                    logger.LogInformation("Migrating database associated with context {DbContextName} for trycount {tyrcount}", typeof(TContext).Name, retryForAvailability);
                     logger.LogInformation($"Connection string is {configuration.GetConnectionString("OrderConnectionString")}");
                     
                     InvokeSeeder(seeder, context, services);

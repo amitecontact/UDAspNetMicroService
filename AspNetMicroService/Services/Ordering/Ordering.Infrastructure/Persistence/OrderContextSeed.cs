@@ -22,16 +22,12 @@ namespace Ordering.Infrastructure.Persistence
 
         private static IEnumerable<Order> GetPreconfiguredOrders()
         {
-            //return new List<Order>
-            //{
-            //    new Order() {UserName = "amt", FirstName = "Amit", LastName = "Ingole", EmailAddress = "amit@gmail.com", AddressLine = "Jayprakash Nagar", Country = "India", TotalPrice = 350 },
-            //    new Order() {UserName = "snv", FirstName = "Saanvi", LastName = "Ingole", EmailAddress = "saanvi@gmail.com", AddressLine = "Jayprakash Nagar", Country = "India", TotalPrice = 250 }
-            //};
+            return new List<Order>
+            {
+                new Order() {UserName = "amt", FirstName = "Amit", LastName = "Ingole", EmailAddress = "amit@gmail.com", AddressLine = "Jayprakash Nagar", Country = "India", TotalPrice = 350 },
+                new Order() {UserName = "snv", FirstName = "Saanvi", LastName = "Ingole", EmailAddress = "saanvi@gmail.com", AddressLine = "Jayprakash Nagar", Country = "India", TotalPrice = 250 }
+            };
 
-            
-                yield return new Order() { UserName = "amt", FirstName = "Amit", LastName = "Ingole", EmailAddress = "amit@gmail.com", AddressLine = "Jayprakash Nagar", Country = "India", TotalPrice = 350 };
-                yield return new Order() { UserName = "snv", FirstName = "Saanvi", LastName = "Ingole", EmailAddress = "saanvi@gmail.com", AddressLine = "Jayprakash Nagar", Country = "India", TotalPrice = 250 };
-            
         }
     }
 }
